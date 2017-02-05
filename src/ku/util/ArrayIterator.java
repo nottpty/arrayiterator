@@ -38,8 +38,7 @@ public class ArrayIterator<T> implements Iterator<T>{
 	@Override
 	public boolean hasNext() {
 		if( lastIndex() ) return false;
-		if( this.array[index+1] != null ) return true;
-		return false;
+		return this.array[index+1] != null;
 	}
 
 	/**
@@ -63,8 +62,7 @@ public class ArrayIterator<T> implements Iterator<T>{
 	 * @return true if current is the last index, return false if current isn't the last index.
 	 */
 	public boolean lastIndex(){
-		if( index == this.array.length-1 ) return true;
-		return false;
+		return index == this.array.length-1;
 	}
 
 }

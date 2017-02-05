@@ -1,7 +1,5 @@
 package ku.util;
 
-import java.util.Scanner;
-
 /**
  * A main class to create objects and run the program.
  * @author Patinya Yongyai
