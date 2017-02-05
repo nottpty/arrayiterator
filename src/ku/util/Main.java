@@ -1,12 +1,14 @@
 package ku.util;
 
+import java.util.Arrays;
+
 /**
  * A main class to create objects and run the program.
  * @author Patinya Yongyai
  *
  */
 public class Main {
-	
+
 	/**
 	 * To create array iterator and show the result.
 	 * @param args not used.
