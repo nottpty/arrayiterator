@@ -50,7 +50,10 @@ public class ArrayIterator<T> implements Iterator<T> {
 	public boolean hasNext() {
 		if (lastIndex())
 			return false;
-		return this.array[index + 1] != null;
+		for(int i = index ; i<array.length ; i++){
+			if(this.array[i + 1] != null) return true;
+		}
+		return false;
 	}
 
 	/**
