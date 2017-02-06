@@ -48,9 +48,11 @@ public class ArrayIterator<T> implements Iterator<T> {
 	 */
 	@Override
 	public boolean hasNext() {
-		for(int i = index ; i<array.length ; i++){
-			if (lastIndex()) return false;
-			if(this.array[i + 1] != null) return true;
+		for (int i = index + 1; i < array.length; i++) {
+			if (lastIndex())
+				return false;
+			if (this.array[i] != null)
+				return true;
 		}
 		return false;
 	}
@@ -65,16 +67,12 @@ public class ArrayIterator<T> implements Iterator<T> {
 	@Override
 	public T next() {
 		if (hasNext()) {
-			tempIndex = ++index;
-			return array[index];
+			while (array[index + 1] == null)
+				++index;
+			tempIndex = index + 1;
+			return array[++index];
 		}
-		while (!hasNext()) {
-			if (lastIndex())
-				throw new NoSuchElementException();
-			++index;
-		}
-		tempIndex = ++index;
-		return array[index];
+		throw new NoSuchElementException();
 	}
 
 	/**
