@@ -49,10 +49,12 @@ public class ArrayIterator<T> implements Iterator<T> {
 	@Override
 	public boolean hasNext() {
 		for (int i = index + 1; i < array.length; i++) {
-			if (lastIndex())
+			if (index == this.array.length - 1)
 				return false;
-			if (this.array[i] != null)
+			if (this.array[i] != null){
+				tempIndex = i;
 				return true;
+			}
 		}
 		return false;
 	}
@@ -67,10 +69,8 @@ public class ArrayIterator<T> implements Iterator<T> {
 	@Override
 	public T next() {
 		if (hasNext()) {
-			while (array[index + 1] == null)
-				++index;
-			tempIndex = index + 1;
-			return array[++index];
+			index = tempIndex;
+			return array[index];
 		}
 		throw new NoSuchElementException();
 	}
@@ -82,19 +82,9 @@ public class ArrayIterator<T> implements Iterator<T> {
 	 * after calling next(), it throws IllegalStateException.
 	 */
 	public void remove() {
-		if (tempIndex == -1 || array[tempIndex] == null)
+		if (index == -1 || array[index] == null)
 			throw new IllegalStateException();
-		this.array[tempIndex] = null;
-	}
-
-	/**
-	 * Check current index of array is the last index or not.
-	 * 
-	 * @return true if current is the last index, return false if current isn't
-	 *         the last index.
-	 */
-	private boolean lastIndex() {
-		return index == this.array.length - 1;
+		this.array[index] = null;
 	}
 
 }
